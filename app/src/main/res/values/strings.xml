@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TP1_mobile</string>
+    <string name="pseudo">Pseudo</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="se_connecter">Se connecter</string>
+    <string name="erreur_connexion">Pseudo ou mot de passe incorrect</string>
+    <string name="changer">Changer</string>
+    <string name="reset">Remettre à zéro</string>
 </resources>

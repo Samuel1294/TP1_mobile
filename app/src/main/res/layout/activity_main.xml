@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Pseudo"
+            android:hint="@string/pseudo"
             android:inputType="text" />
 
         <EditText
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Mot de passe"
+            android:hint="@string/mot_de_passe"
             android:inputType="text" />
 
         <Button
@@ -37,7 +37,7 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Se connecter" />
+            android:text="@string/se_connecter" />
     </LinearLayout>
 
     <ImageView
