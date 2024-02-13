@@ -52,6 +52,18 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@android:drawable/ic_menu_share" />
 
+                        <ImageView
+                            android:id="@+id/lang"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/flag"
+                            android:translationZ="10dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btnPartager"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:id="@+id/txtCompteur"
                             android:layout_width="wrap_content"
@@ -66,7 +78,7 @@
 
                         <Button
                             android:id="@+id/btnAjouter"
-                            android:layout_width="75dp"
+                            android:layout_width="0dp"
                             android:layout_height="75dp"
                             android:text="+"
                             app:layout_constraintBottom_toBottomOf="parent"

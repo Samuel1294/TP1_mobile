@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TP1_mobile</string>
+    <string name="titre">Habits</string>
+    <string name="drapeau">flag_en</string>
     <string name="pseudo">Username</string>
     <string name="mot_de_passe">Password</string>
     <string name="se_connecter">Log in</string>

@@ -29,14 +29,14 @@ class Habitudes : AppCompatActivity(), View.OnClickListener {
         txtTitre = findViewById(R.id.txtTitre)
         txtCompteur = findViewById(R.id.txtCompteur)
 
+        prefs = getSharedPreferences("MonFichierDeSauvegarde", MODE_PRIVATE)
+        indexHabitude = prefs.getInt("indexHabitude", 0)
+
         // toolbar
         val toolbar = findViewById<Toolbar>(R.id.tbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Habitudes"
-        supportActionBar?.subtitle = intent.getStringExtra("accountName").toString()
-
-        prefs = getSharedPreferences("MonFichierDeSauvegarde", MODE_PRIVATE)
-        indexHabitude = prefs.getInt("indexHabitude", 0)
+        supportActionBar?.title = resources.getString(R.string.titre)
+        supportActionBar?.subtitle = prefs.getString("pseudo", "bot")
 
         habitudes = arrayOf(
             Habitude("Ne pas arriver en retard"),
@@ -51,8 +51,6 @@ class Habitudes : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.btnAvancer).setOnClickListener(this)
         findViewById<Button>(R.id.btnReculer).setOnClickListener(this)
 
-        miseAJourHabitude()
-
         findViewById<ImageButton>(R.id.btnPartager).setOnClickListener {
             val message = "J’ai réussi " + habitudes[indexHabitude].compteur + " fois à faire «" + habitudes[indexHabitude].nom + "». "
             val intent = Intent(Intent.ACTION_SEND).apply {
@@ -61,6 +59,8 @@ class Habitudes : AppCompatActivity(), View.OnClickListener {
             }
             startActivity(intent)
         }
+
+        miseAJourHabitude()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -77,6 +77,15 @@ class Habitudes : AppCompatActivity(), View.OnClickListener {
         }
 
         return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        supportActionBar?.subtitle = prefs.getString("pseudo", "bot")
+        for ((index, habitude) in habitudes.withIndex())
+            habitude.compteur = prefs.getInt("Habitude$index", 0)
+        miseAJourHabitude()
     }
 
     override fun onClick(v: View?) {
@@ -105,7 +114,7 @@ class Habitudes : AppCompatActivity(), View.OnClickListener {
         miseAJourHabitude()
     }
 
-    fun miseAJourHabitude() {
+    private fun miseAJourHabitude() {
         val habit = habitudes[indexHabitude]
         txtTitre.text = habit.nom
         txtCompteur.text = habit.compteur.toString()

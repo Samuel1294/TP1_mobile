@@ -36,6 +36,13 @@ class Configuration : AppCompatActivity() {
                 editor.apply()
             }
         }
+
+        findViewById<Button>(R.id.btnMiseAZero).setOnClickListener {
+            val editor = prefs.edit()
+            for (i in 0..2)
+                editor.putInt("Habitude$i", 0)
+            editor.apply()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
